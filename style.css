@@ -278,6 +278,18 @@ input, select, textarea {
   font-size: 15px;
 }
 
+#signup-role,
+#item-category {
+  background: #fff;
+  color: #0b0b0b;
+}
+
+#signup-role option,
+#item-category option {
+  color: #0b0b0b;
+  background: #fff;
+}
+
 input:focus, select:focus, textarea:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(109,211,255,0.25);
@@ -321,6 +333,8 @@ textarea {
   max-width: 540px;
   padding: 22px;
   position: relative;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
 }
 
 .close {
