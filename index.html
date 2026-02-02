@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Lost &amp; Found</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-wrap">
+    <div class="blur-blob blob-1"></div>
+    <div class="blur-blob blob-2"></div>
+    <div class="blur-blob blob-3"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">LF</span>
+      <div>
+        <div class="brand-title">School Lost &amp; Found</div>
+        <div class="brand-sub">Find it fast. Keep it safe.</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="login-btn" class="ghost">Login</button>
+      <button id="signup-btn" class="solid">Sign Up</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- Hero / Homepage -->
+    <section id="homepage" class="panel hero">
+      <div class="hero-text">
+        <p class="eyebrow">All-school lost &amp; found</p>
+        <h1>Quick claims for students, smooth intake for staff.</h1>
+        <p class="lead">Search approved items, submit claims with proof, and help office staff keep items organized and secure.</p>
+        <div class="cta-row">
+          <button id="signup-btn-alt" class="solid" onclick="document.getElementById('signup-btn')?.click()">Get Started</button>
+          <button id="login-btn-alt" class="ghost" onclick="document.getElementById('login-btn')?.click()">I already have an account</button>
+        </div>
+        <div class="pill-row">
+          <span class="pill">Students: search &amp; claim</span>
+          <span class="pill">Teachers/Office: report items</span>
+          <span class="pill">Admin: approve &amp; track</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="stat">
+          <div class="stat-label">Items secured</div>
+          <div class="stat-value">24</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Claims resolved</div>
+          <div class="stat-value">18</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Avg. approval time</div>
+          <div class="stat-value">1 day</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Auth panels -->
+    <section class="panel auth-panel" id="login-form">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Welcome back</p>
+          <h2>Login</h2>
+        </div>
+        <button id="back-to-home-from-login" class="ghost small">Back</button>
+      </div>
+      <form id="login" class="form-grid">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" class="solid">Login</button>
+      </form>
+    </section>
+
+    <section class="panel auth-panel" id="signup-form">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">New here?</p>
+          <h2>Sign Up</h2>
+        </div>
+        <button id="back-to-home" class="ghost small">Back</button>
+      </div>
+      <form id="signup" class="form-grid">
+        <label for="signup-username">Username</label>
+        <input type="text" id="signup-username" name="username" required>
+
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" name="password" required>
+
+        <label for="signup-role">Role</label>
+        <select id="signup-role" name="role">
+          <option value="student">Student</option>
+          <option value="employer">Teacher / Office</option>
+        </select>
+
+        <button type="submit" class="solid">Create Account</button>
+      </form>
+    </section>
+
+    <!-- Student Dashboard -->
+    <section id="student-dashboard" class="panel dashboard">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Student view</p>
+          <h2>Find your lost item</h2>
+        </div>
+        <button class="logout-btn ghost">Log Out</button>
+      </div>
+      <div class="filters">
+        <input type="text" id="search-input" placeholder="Search by keyword (name, details, location)">
+        <select id="category-filter">
+          <option value="all">All Categories</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Accessories">Accessories</option>
+          <option value="Backpacks">Backpacks / Bags</option>
+          <option value="Keys">Keys</option>
+          <option value="Water Bottles">Water Bottles</option>
+          <option value="Books">Books / Notebooks</option>
+          <option value="School-Issued Computer">School-Issued Computer</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div id="job-listings" class="card-list"></div>
+    </section>
+
+    <!-- Teacher / Office Dashboard -->
+    <section id="employer-dashboard" class="panel dashboard">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Teacher / Office</p>
+          <h2>Report &amp; track items</h2>
+        </div>
+        <button class="logout-btn ghost">Log Out</button>
+      </div>
+      <div class="split">
+        <div>
+          <p>Report found items for admin review. Keep sensitive items secure.</p>
+          <button id="open-post-job-modal" class="solid">Report a Found Item</button>
+        </div>
+        <div class="muted-box">
+          <strong>Reminder:</strong> No cash, phones, or personal handheld electronics (unless it is a school-issued device).
+        </div>
+      </div>
+      <div id="employer-jobs-container" class="card-list">
+        <h3>Items You Reported</h3>
+      </div>
+      <div id="employer-applications-container" class="card-list" style="display: none;">
+        <h3>Claims on Items You Reported</h3>
+      </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section id="admin-dashboard" class="panel dashboard">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Admin</p>
+          <h2>Approve &amp; oversee</h2>
+        </div>
+        <button class="logout-btn ghost">Log Out</button>
+      </div>
+      <div class="split">
+        <div>
+          <h3>Pending Submissions</h3>
+          <div id="pending-postings" class="card-list"></div>
+        </div>
+        <div>
+          <h3>Approved Items</h3>
+          <div id="admin-approved-list" class="card-list"></div>
+        </div>
+      </div>
+      <div class="split">
+        <div>
+          <h3>Claims</h3>
+          <div id="admin-claims-list" class="card-list"></div>
+        </div>
+        <div class="admin-tools">
+          <button id="refresh-all-btn" class="ghost">Refresh All</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Report Modal -->
+  <div id="post-job-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span id="close-post-job-modal" class="close">&times;</span>
+      <h2>Report a Found Item</h2>
+      <p class="policy-note"><strong>Posting rules (Teacher/Office only):</strong> Do <u>not</u> post cash/money, phones, or personal hand-held electronics. The only electronics exception is a <u>school-issued computer</u>.</p>
+      <form id="post-item" class="form-grid">
+        <label for="item-name">Item Name</label>
+        <input type="text" id="item-name" name="item-name" required>
+
+        <label for="item-description">Description / Identifying Details</label>
+        <textarea id="item-description" name="item-description" required></textarea>
+
+        <label for="item-location">Where was it found?</label>
+        <input type="text" id="item-location" name="item-location" placeholder="e.g., Cafeteria, Hallway by Room 210" required>
+
+        <label for="item-date">Date found</label>
+        <input type="date" id="item-date" name="item-date" required>
+
+        <label for="item-category">Category</label>
+        <select id="item-category" name="item-category" required>
+          <option value="Clothing">Clothing</option>
+          <option value="Accessories">Accessories (glasses, jewelry, etc.)</option>
+          <option value="Backpacks">Backpacks / Bags</option>
+          <option value="Keys">Keys</option>
+          <option value="Water Bottles">Water Bottles</option>
+          <option value="Books">Books / Notebooks</option>
+          <option value="School-Issued Computer">School-Issued Computer (allowed)</option>
+          <option value="Other">Other</option>
+          <option value="Money">Money / Cash (NOT allowed)</option>
+          <option value="Phone">Phone (NOT allowed)</option>
+          <option value="Personal Handheld Electronics">Personal Hand-held Electronics (NOT allowed)</option>
+        </select>
+
+        <label for="item-photo">Photo (required)</label>
+        <input type="file" id="item-photo" name="item-photo" accept="image/*" required>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="posting-policy-confirm" required>
+          I confirm this post follows the rules above.
+        </label>
+
+        <button type="submit" class="solid">Submit for Approval</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Claim Modal -->
+  <div id="apply-modal" class="modal" style="display: none;">
+    <div id="apply-modal-content" class="modal-content">
+      <span id="close-apply-modal" class="close">&times;</span>
+      <h2>Claim / Inquiry</h2>
+      <form id="claim-form" class="form-grid">
+        <label for="claimer-name">Your Name</label>
+        <input type="text" id="claimer-name" required>
+
+        <label for="claimer-contact">School Email</label>
+        <input type="email" id="claimer-contact" placeholder="name@school.org" required>
+
+        <label for="claim-details">Proof / Details (what makes it yours?)</label>
+        <textarea id="claim-details" required placeholder="Describe identifying marks, contents, lock code (if applicable), etc."></textarea>
+
+        <label for="proof-photo">Optional proof photo</label>
+        <input type="file" id="proof-photo" accept="image/*">
+
+        <button type="submit" class="solid">Submit Claim</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="notification" class="notification"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
