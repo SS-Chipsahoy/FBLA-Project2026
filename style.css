@@ -280,14 +280,15 @@ input, select, textarea {
 
 #signup-role,
 #item-category {
-  background: #fff;
-  color: #0b0b0b;
+  background: linear-gradient(#ffffff, #f2f2f2);
+  color: #000;
+  border: 1px solid #ccc;
 }
 
 #signup-role option,
 #item-category option {
-  color: #0b0b0b;
-  background: #fff;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 input:focus, select:focus, textarea:focus {
