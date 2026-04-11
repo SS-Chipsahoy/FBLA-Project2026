@@ -1,12 +1,3 @@
-/* =========================================================
-   School Lost & Found - Clean script.js (LocalStorage only)
-   Roles mapping:
-     - "employee"  => Student
-     - "employer"  => Teacher/Office
-     - "admin"     => Admin
-   Storage keys:
-     users, currentUser, pendingItems, approvedItems, claims
-   ========================================================= */
 
 (() => {
   "use strict";
